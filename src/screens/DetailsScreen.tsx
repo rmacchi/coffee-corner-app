@@ -59,7 +59,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
       price: [{ ...price, quantity: 1 }],
     });
     calculateCartPrice();
-    navigation.navigate('cart');
+    navigation.navigate('Cart');
   };
 
   return (
