@@ -56,7 +56,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
       imagelink_square,
       special_ingredient,
       type,
-      price: [{ ...price, quantity: 1 }],
+      prices: [{ ...price, quantity: 1 }],
     });
     calculateCartPrice();
     navigation.navigate('Cart');
@@ -144,7 +144,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
               imagelink_square: ItemOfIndex.imagelink_square,
               special_ingredient: ItemOfIndex.special_ingredient,
               type: ItemOfIndex.type,
-              price: ItemOfIndex.price,
+              price: price,
             });
           }}
         />
