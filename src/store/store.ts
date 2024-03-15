@@ -21,37 +21,34 @@ export const useStore = create(
           produce(state => {
             let found = false;
             for (let i = 0; i < state.CartList.length; i++) {
-              if (state.CartList[i].id == cartItem.id) {
+              if (state.CartList[i].id === cartItem.id) {
                 found = true;
-
-                if (state.CartList[i].prices && state.CartList[i].prices.length > 0) {
-                  let size = false;
-                  for (let j = 0; j < state.CartList[i].prices.length; j++) {
-                    if (
-                      state.CartList[i].prices[j].size == cartItem.prices[0].size
-                    ) {
-                      size = true;
-                      state.CartList[i].prices[j].quantity++;
-                      break;
-                    }
+                let size = false;
+                for (let j = 0; j < state.CartList[i].prices.length; j++) {
+                  if (
+                    state.CartList[i].prices[j].size === cartItem.prices[0].size
+                  ) {
+                    size = true;
+                    state.CartList[i].prices[j].quantity++;
+                    break;
                   }
-                  if (size == false) {
-                    state.CartList[i].prices.push(cartItem.prices[0]);
-                  }
-                  state.CartList[i].prices.sort((a: any, b: any) => {
-                    if (a.size > b.size) {
-                      return -1;
-                    }
-                    if (a.size < b.size) {
-                      return 1;
-                    }
-                    return 0;
-                  });
-                  break;
                 }
+                if (size === false) {
+                  state.CartList[i].prices.push(cartItem.prices[0]);
+                }
+                state.CartList[i].prices.sort((a: any, b: any) => {
+                  if (a.size > b.size) {
+                    return -1;
+                  }
+                  if (a.size < b.size) {
+                    return 1;
+                  }
+                  return 0;
+                });
+                break;
               }
             }
-            if (found == false) {
+            if (found === false) {
               state.CartList.push(cartItem);
             }
           }),
@@ -62,17 +59,14 @@ export const useStore = create(
             let totalprice = 0;
             for (let i = 0; i < state.CartList.length; i++) {
               let tempprice = 0;
-
-              if (state.CartList[i].prices && state.CartList[i].prices.length > 0) {
-                for (let j = 0; j < state.CartList[i].prices.length; j++) {
-                  tempprice =
-                    tempprice +
-                    parseFloat(state.CartList[i].prices[j].price) *
-                    state.CartList[i].prices[j].quantity;
-                }
-                state.CartList[i].ItemPrice = tempprice.toFixed(2).toString();
-                totalprice = totalprice + tempprice;
+              for (let j = 0; j < state.CartList[i].prices.length; j++) {
+                tempprice =
+                  tempprice +
+                  parseFloat(state.CartList[i].prices[j].price) *
+                  state.CartList[i].prices[j].quantity;
               }
+              state.CartList[i].ItemPrice = tempprice.toFixed(2).toString();
+              totalprice = totalprice + tempprice;
             }
             state.CartPrice = totalprice.toFixed(2).toString();
           }),
@@ -80,10 +74,10 @@ export const useStore = create(
       addToFavoriteList: (type: string, id: string) =>
         set(
           produce(state => {
-            if (type == 'Coffee') {
+            if (type === 'Coffee') {
               for (let i = 0; i < state.CoffeeList.length; i++) {
-                if (state.CoffeeList[i].id == id) {
-                  if (state.CoffeeList[i].favorite == false) {
+                if (state.CoffeeList[i].id === id) {
+                  if (state.CoffeeList[i].favorite === false) {
                     state.CoffeeList[i].favorite = true;
                     state.FavoritesList.unshift(state.CoffeeList[i]);
                   } else {
@@ -92,10 +86,10 @@ export const useStore = create(
                   break;
                 }
               }
-            } else if (type == 'Bean') {
+            } else if (type === 'Bean') {
               for (let i = 0; i < state.BeanList.length; i++) {
-                if (state.BeanList[i].id == id) {
-                  if (state.BeanList[i].favorite == false) {
+                if (state.BeanList[i].id === id) {
+                  if (state.BeanList[i].favorite === false) {
                     state.BeanList[i].favorite = true;
                     state.FavoritesList.unshift(state.BeanList[i]);
                   } else {
@@ -110,10 +104,10 @@ export const useStore = create(
       deleteFromFavoriteList: (type: string, id: string) =>
         set(
           produce(state => {
-            if (type == 'Coffee') {
+            if (type === 'Coffee') {
               for (let i = 0; i < state.CoffeeList.length; i++) {
-                if (state.CoffeeList[i].id == id) {
-                  if (state.CoffeeList[i].favorite == true) {
+                if (state.CoffeeList[i].id === id) {
+                  if (state.CoffeeList[i].favorite === true) {
                     state.CoffeeList[i].favorite = false;
                   } else {
                     state.CoffeeList[i].favorite = true;
@@ -121,10 +115,10 @@ export const useStore = create(
                   break;
                 }
               }
-            } else if (type == 'Bean') {
+            } else if (type === 'Bean') {
               for (let i = 0; i < state.BeanList.length; i++) {
-                if (state.BeanList[i].id == id) {
-                  if (state.BeanList[i].favorite == true) {
+                if (state.BeanList[i].id === id) {
+                  if (state.BeanList[i].favorite === true) {
                     state.BeanList[i].favorite = false;
                   } else {
                     state.BeanList[i].favorite = true;
@@ -135,7 +129,7 @@ export const useStore = create(
             }
             let spliceIndex = -1;
             for (let i = 0; i < state.FavoritesList.length; i++) {
-              if (state.FavoritesList[i].id == id) {
+              if (state.FavoritesList[i].id === id) {
                 spliceIndex = i;
                 break;
               }
@@ -147,9 +141,9 @@ export const useStore = create(
         set(
           produce(state => {
             for (let i = 0; i < state.CartList.length; i++) {
-              if (state.CartList[i].id == id) {
+              if (state.CartList[i].id === id) {
                 for (let j = 0; j < state.CartList[i].prices.length; j++) {
-                  if (state.CartList[i].prices[j].size == size) {
+                  if (state.CartList[i].prices[j].size === size) {
                     state.CartList[i].prices[j].quantity++;
                     break;
                   }
@@ -162,9 +156,9 @@ export const useStore = create(
         set(
           produce(state => {
             for (let i = 0; i < state.CartList.length; i++) {
-              if (state.CartList[i].id == id) {
+              if (state.CartList[i].id === id) {
                 for (let j = 0; j < state.CartList[i].prices.length; j++) {
-                  if (state.CartList[i].prices[j].size == size) {
+                  if (state.CartList[i].prices[j].size === size) {
                     if (state.CartList[i].prices.length > 1) {
                       if (state.CartList[i].prices[j].quantity > 1) {
                         state.CartList[i].prices[j].quantity--;
@@ -213,12 +207,12 @@ export const useStore = create(
               });
             }
             state.CartList = [];
-          })
+          }),
         ),
     }),
     {
       name: 'coffee-app',
       storage: createJSONStorage(() => AsyncStorage),
-    }
-  )
+    },
+  ),
 );

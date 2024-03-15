@@ -44,7 +44,7 @@ const CartScreen = ({ navigation }: any) => {
           <View style={styles.ItemContainer}>
             <HeaderBar title="Cart" />
 
-            {CartList.length == 0 ? (
+            {CartList.length === 0 ? (
               <EmptyListAnimation title={'Cart is Empty'} />
             ) : (
               <View style={styles.ListItemContainer}>
@@ -75,7 +75,7 @@ const CartScreen = ({ navigation }: any) => {
               </View>
             )}
           </View>
-          {CartList.length != 0 ? (
+          {CartList.length !== 0 ? (
             <PaymentFooter
               buttonPressHandler={buttonPressHandler}
               buttonTitle="Pay"

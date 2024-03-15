@@ -60,7 +60,7 @@ const CartItem: React.FC<CartItemProps> = ({
                   <Text style={[
                     styles.SizeText,
                     {
-                      fontSize: type == 'Bean'
+                      fontSize: type === 'Bean'
                         ? FONTSIZE.size_12
                         : FONTSIZE.size_16,
                     },
@@ -128,7 +128,7 @@ const CartItem: React.FC<CartItemProps> = ({
                 <Text style={[
                   styles.SizeText,
                   {
-                    fontSize: type == 'Bean'
+                    fontSize: type === 'Bean'
                       ? FONTSIZE.size_12
                       : FONTSIZE.size_16,
                   },
