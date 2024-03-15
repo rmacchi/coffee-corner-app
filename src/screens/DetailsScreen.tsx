@@ -18,7 +18,7 @@ import PaymentFooter from '../components/PaymentFooter';
 
 const DetailsScreen = ({ navigation, route }: any) => {
   const ItemOfIndex = useStore((state: any) =>
-    route.params.type == 'Coffee' ? state.CoffeeList : state.BeanList,
+    route.params.type === 'Coffee' ? state.CoffeeList : state.BeanList,
   )[route.params.index];
 
   const addToFavoriteList = useStore((state: any) => state.addToFavoriteList);
@@ -107,7 +107,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
                   styles.SizeBox,
                   {
                     borderColor:
-                      data.size == price.size
+                      data.size === price.size
                         ? COLORS.primaryOrangeHex
                         : COLORS.primaryDarkGreyHex,
                   },
@@ -117,11 +117,11 @@ const DetailsScreen = ({ navigation, route }: any) => {
                     styles.SizeText,
                     {
                       fontSize:
-                        ItemOfIndex.type == 'bean'
+                        ItemOfIndex.type === 'Bean'
                           ? FONTSIZE.size_14
                           : FONTSIZE.size_16,
                       color:
-                        data.size == price.size
+                        data.size === price.size
                           ? COLORS.primaryOrangeHex
                           : COLORS.secondaryLightGreyHex,
                     },
