@@ -1,8 +1,12 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+![Cover](./.github/cover.png)
+
+# Coffee Corner
+
+This application was developed using ReactNative.
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+After cloning the repository, access the project folder and execute the commands below:
 
 ## Step 1: Start the Metro Server
 
